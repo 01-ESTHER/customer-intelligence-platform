@@ -37,6 +37,20 @@ customer-intelligence-platform/
 └── requirements.txt
 ```
 
+## Power BI Dashboard Preview
+
+### Customer Overview
+
+![Customer Overview Dashboard](images/customer_overview.jpg)
+
+### Customer Behaviour & Retention
+
+![Customer Behaviour and Retention Dashboard](images/customer_behaviour_retention.jpg)
+
+
+---
+
+
 ## Current Progress
 
 - Project structure and Git version control established
