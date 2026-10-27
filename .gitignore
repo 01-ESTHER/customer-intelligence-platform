@@ -1,7 +1,37 @@
+# Raw and processed datasets
 data/raw/
+data/processed/
+/data/*.csv
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
 .venv/
+venv/
+env/
+
+# Python cache
 __pycache__/
 *.pyc
-.env
+*.pyo
+.pytest_cache/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# IDE settings
 .idea/
-/data/*.csv
+.vscode/
+
+# Locally trained model artifacts
+models/*.joblib
+models/*.pkl
+
+# System files
+.DS_Store
+Thumbs.db
+# Local environment backup
+requirements-full-backup.txt
