@@ -35,3 +35,6 @@ models/*.pkl
 Thumbs.db
 # Local environment backup
 requirements-full-backup.txt
+# Private stakeholder presentation documents
+*Customer Intelligence Platform Rough sketch*.pdf
+*Customer Intelligence Platform*Stakeholder Presentation*.pdf
