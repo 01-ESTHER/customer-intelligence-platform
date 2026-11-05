@@ -20,3 +20,4 @@ python-dotenv
 # Notebook environment
 jupyter
 ipykernel
+statsmodels>=0.14,<0.16
