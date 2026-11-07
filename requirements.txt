@@ -21,3 +21,4 @@ python-dotenv
 jupyter
 ipykernel
 statsmodels>=0.14,<0.16
+pg8000>=1.31,<2ss
