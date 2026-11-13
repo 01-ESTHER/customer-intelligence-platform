@@ -125,6 +125,57 @@ The interactive Power BI report is available in [`powerbi/powerbi.pbix`](powerbi
 - Created a 60-day repeat-purchase target with a defined observation window and eligibility criteria.
 - Prepared 78,100 historical customers for scoring and segmentation.
 
+
+#### Reproducible Feature Engineering Pipeline
+
+The customer feature-engineering workflow has been reconstructed as a standalone Python script:
+
+`scripts/build_customer_features.py`
+
+The pipeline:
+
+- Loads and validates five original Olist datasets.
+- Identifies each customer's first recorded order.
+- Applies a 60-day repeat-purchase observation window and an additional 30-day delivery buffer.
+- Excludes customers with uncertain negative repeat-purchase labels.
+- Engineers purchase timing, basket, freight, payment, product-category and geographical features.
+- Compares the reconstructed dataset against the validated reference dataset before exporting results.
+
+**Run the pipeline**
+
+From the project root directory:
+
+```powershell
+python scripts/build_customer_features.py
+```
+
+**Required inputs**
+
+- Original Olist CSV files in `data/`.
+- Validated reference dataset at `data/processed/customer_features_reference.pkl`.
+- Python dependencies listed in `requirements.txt`.
+
+The reference dataset is required for the current implementation's comparison and export checks. It must be provided separately if it is not included in the repository.
+
+**Validated results**
+
+| Validation metric | Result |
+|---|---:|
+| Customer records | 78,100 |
+| Dataset columns | 29 |
+| Confirmed repeat purchasers | 1,589 |
+| Duplicate customers | 0 |
+| Missing or extra customers | 0 |
+| Columns with value differences | 0 |
+
+The comparison aligns records by customer identifier and checks feature values using a numerical tolerance for floating-point fields.
+
+**Output**
+
+`data/processed/customer_features_rebuilt.pkl`
+
+The pipeline creates this output only after the reference comparison passes. The original feature dataset remains unchanged.
+
 ### Predictive Modelling & Evaluation
 - Developed a logistic regression baseline for predicting repeat purchases within 60 days.
 - Evaluated alternative approaches, including Random Forest and XGBoost.
