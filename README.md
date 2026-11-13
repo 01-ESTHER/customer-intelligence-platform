@@ -141,13 +141,39 @@ The pipeline:
 - Engineers purchase timing, basket, freight, payment, product-category and geographical features.
 - Compares the reconstructed dataset against the validated reference dataset before exporting results.
 
+
 **Run the pipeline**
 
-From the project root directory:
+The pipeline supports two execution modes.
+
+**Build mode**
+
+Generate customer features directly from the original Olist datasets without requiring the saved reference dataset.
 
 ```powershell
-python scripts/build_customer_features.py
+python scripts/build_customer_features.py --mode build
 ```
+
+Output: `data/processed/customer_features_built.pkl`
+
+**Verify mode**
+
+Reconstruct the features, compare customer identifiers, columns and values against the validated reference dataset, and export only when the comparison passes.
+
+```powershell
+python scripts/build_customer_features.py --mode verify
+```
+
+Output: `data/processed/customer_features_rebuilt.pkl`
+
+Verify mode requires:
+
+`data/processed/customer_features_reference.pkl`
+
+If no execution mode is specified, the script defaults to `verify`.
+
+Both modes perform the same upstream data-quality and feature-validation checks.
+
 
 **Required inputs**
 

@@ -1,6 +1,25 @@
 from pathlib import Path
+import argparse
 import pandas as pd
 import numpy as np
+
+
+# Configure the pipeline execution mode
+parser = argparse.ArgumentParser(
+    description="Rebuild customer features from raw Olist data."
+)
+
+parser.add_argument(
+    "--mode",
+    choices=["build", "verify"],
+    default="verify",
+    help="Build features independently or verify against the reference dataset."
+)
+
+args = parser.parse_args()
+
+print("Pipeline execution mode:", args.mode)
+
 # Locate project directories
 project_root = Path(__file__).resolve().parent.parent
 data_dir = project_root / "data"
@@ -825,6 +844,30 @@ assert customer_features["customer_city_state"].notna().all()
 
 print("\nComplete feature engineering validation passed.")
 
+
+# Export independently when running in build mode
+if args.mode == "build":
+    output_path = (
+        data_dir / "processed" / "customer_features_built.pkl"
+    )
+
+    # Save the features after all preceding validation checks pass
+    customer_features.to_pickle(output_path)
+
+    print("\nIndependent Feature Build")
+    print("-" * 45)
+    print("Execution mode:", args.mode)
+    print("Output file:", output_path)
+    print("File exists:", output_path.is_file())
+    print("Customer records:", len(customer_features))
+    print("Feature columns:", customer_features.shape[1])
+
+    assert output_path.is_file()
+
+    print("\nIndependent feature build completed.")
+
+    # End build mode without requiring the reference dataset
+    raise SystemExit(0)
 
 # Load the preserved reference dataset from Notebook 02
 reference_path = (
