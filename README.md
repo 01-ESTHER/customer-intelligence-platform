@@ -267,6 +267,64 @@ The next phase focuses on independent model validation, calibration, reproducibi
 - Enhance documentation, dependency management and reproducibility.
 - Explore containerisation using Docker and automated testing through GitHub Actions.
 
+
+#### Reproducible Customer Scoring Pipeline
+
+The customer-scoring workflow is implemented in:
+
+`scripts/score_customers.py`
+
+It uses the reconstructed customer features and an existing fitted logistic regression pipeline to generate historical 60-day repeat-purchase probabilities.
+
+**Run the scoring pipeline**
+
+From the project root directory:
+
+```powershell
+python scripts/build_customer_features.py --mode build
+python scripts/score_customers.py
+```
+
+**Required inputs**
+
+- `data/processed/customer_features_built.pkl`
+- `models/repeat_purchase_logistic_regression.joblib`
+- Python dependencies listed in `requirements.txt`
+
+The saved model includes fitted preprocessing and expects nine customer features. The scoring script selects these features using the model's recorded input schema.
+
+**Validated scoring results**
+
+| Metric | Result |
+|---|---:|
+| Total customers | 78,100 |
+| Successfully scored | 76,197 |
+| Not scored due to missing model inputs | 1,903 |
+| Missing probabilities among scored customers | 0 |
+| Duplicate customer identifiers | 0 |
+
+Customers with incomplete model inputs are retained with a missing probability and an explicit scoring status. No default probability is assigned.
+
+**Output**
+
+`data/processed/customer_scoring_output.pkl`
+
+The output contains:
+
+- `customer_unique_id`
+- `order_id`
+- `repeat_purchase_propensity`
+- `scoring_status`
+
+The script validates probability ranges, customer uniqueness, scoring coverage and the saved output.
+
+**Scope and limitations**
+
+These scores describe historical customers. Running the scoring pipeline does not retrain the model or provide new evidence of predictive performance.
+
+The workflow is intended for reproducible analysis and integration, not live production decisioning.
+
+
 ### Business Intelligence & Reporting
 - Enhance Power BI reporting with customer lifetime value and additional commercial KPIs.
 - Improve dashboard navigation, filtering and customer segment comparisons.
