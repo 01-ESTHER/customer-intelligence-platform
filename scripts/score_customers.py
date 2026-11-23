@@ -203,6 +203,57 @@ assert len(customer_scoring_output) == 78100
 assert customer_scoring_output["customer_unique_id"].is_unique
 assert customer_scoring_output["scoring_status"].notna().all()
 
+
+# Assign propensity segments to customers with valid model scores
+segment_labels = [
+    "Low Propensity",
+    "Medium Propensity",
+    "High Propensity"
+]
+
+scored_mask = customer_scoring_output["scoring_status"].eq("scored")
+
+scored_probabilities = customer_scoring_output.loc[
+    scored_mask, "repeat_purchase_propensity"
+]
+
+customer_scoring_output["propensity_segment"] = pd.NA
+
+customer_scoring_output.loc[
+    scored_mask, "propensity_segment"
+] = pd.qcut(
+    scored_probabilities.rank(method="first"),
+    q=[0, 0.50, 0.80, 1.00],
+    labels=segment_labels
+).astype("object")
+
+# Summarise segment assignments
+segment_summary = (
+    customer_scoring_output.loc[scored_mask]
+    .groupby("propensity_segment")
+    .agg(
+        customers=("customer_unique_id", "nunique"),
+        average_propensity=("repeat_purchase_propensity", "mean"),
+        minimum_propensity=("repeat_purchase_propensity", "min"),
+        maximum_propensity=("repeat_purchase_propensity", "max")
+    )
+    .reindex(segment_labels)
+)
+
+print("\nCustomer Propensity Segmentation Validation")
+print("-" * 45)
+print(segment_summary)
+
+print(
+    "\nCustomers without segments:",
+    customer_scoring_output["propensity_segment"].isna().sum()
+)
+
+assert segment_summary["customers"].sum() == 76197
+assert customer_scoring_output["propensity_segment"].isna().sum() == 1903
+
+print("\nCustomer propensity segmentation validation passed.")
+
 # Export the scoring results
 customer_scoring_output.to_pickle(output_path)
 
@@ -233,4 +284,6 @@ print(
 )
 
 print("\nCustomer scoring export completed.")
+
+
 
