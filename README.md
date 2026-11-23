@@ -1,377 +1,515 @@
-# Customer Intelligence Platform
+**# Customer Intelligence Platform**
 
-## Project Overview
+**## Project Overview**
 
 This project is an end-to-end Customer Intelligence Platform developed using the Brazilian Olist e-commerce dataset. It combines PostgreSQL, SQL, and Power BI to analyse customer purchasing behaviour, spending patterns, segmentation, and repeat purchases.
 
 The objective is to transform raw transactional data into meaningful business insights that support customer understanding, retention analysis, and data-driven decision-making.
 
 The current implementation includes relational database development, SQL-based data transformation and validation, customer segmentation, second-purchase behaviour analysis, and a two-page interactive Power BI dashboard. Future development will explore Python-based analytics and predictive machine learning.
----
 
-## Project Structure
+**---**
 
-```
+**## Project Structure**
+
+\`\`\`
+
 customer-intelligence-platform/
+
 │
+
 ├── data/
-│   └── processed/
+
+│   └── processed/
+
 │
+
 ├── notebooks/
+
 │
+
 ├── powerbi/
-│   └── powerbi.pbix
+
+│   └── powerbi.pbix
+
 │
+
 ├── scripts/
+
 │
+
 ├── sql/
-│   ├── 01_create_customer_table.sql
-│   ├── 02_create_remaining_tables.sql
-│   ├── 03_customer_spending.sql
-│   ├── 04_customer_segmentation.sql
-│   ├── 05_data_validation.sql
-│   └── 06_second_purchase_analysis.sql
+
+│   ├── 01_create_customer_table.sql
+
+│   ├── 02_create_remaining_tables.sql
+
+│   ├── 03_customer_spending.sql
+
+│   ├── 04_customer_segmentation.sql
+
+│   ├── 05_data_validation.sql
+
+│   └── 06_second_purchase_analysis.sql
+
 │
+
 ├── .gitignore
+
 ├── README.md
+
 └── requirements.txt
-```
 
-## Power BI Dashboard Preview
+\`\`\`
 
-### Customer Overview
+**## Power BI Dashboard Preview**
 
-## Power BI Dashboard Preview
+**### Customer Overview**
+
+**## Power BI Dashboard Preview**
 
 The Customer Intelligence Platform includes three interactive Power BI dashboards that transform e-commerce transaction data into customer insights. Together, they support customer understanding, repeat-purchase analysis and exploratory retention decision-making.
 
-### Customer Overview
+**### Customer Overview**
 
-![Customer Overview Dashboard](images/customer_overview.jpg)
+![Customer Overview Dashboard]\(images/customer_overview\.jpg)
 
-**Purpose:** Provide an overview of the customer base, spending patterns and geographic distribution.
+**\*\*Purpose:\*\*** Provide an overview of the customer base, spending patterns and geographic distribution.
 
-**What the visuals show:**
+**\*\*What the visuals show:\*\***
 
-- **KPI cards:** Summarise total customers, customer spending, repeat customers and repeat-purchase rate.
-- **Customer distribution by segment:** Shows the relative size of repeat, high-value one-time and other one-time customer groups.
-- **Customer spending by segment:** Compares the total spending contributed by each customer segment.
-- **Average spending by segment:** Highlights differences in spending behaviour across customer groups.
-- **Top 10 states:** Identifies the geographic markets with the largest customer populations.
+\- **\*\*KPI cards:\*\*** Summarise total customers, customer spending, repeat customers and repeat-purchase rate.
 
-**Business interpretation:** The dashboard helps distinguish customer volume from customer value, identify where spending is concentrated and highlight customer groups that deserve further investigation.
+\- **\*\*Customer distribution by segment:\*\*** Shows the relative size of repeat, high-value one-time and other one-time customer groups.
 
-### Customer Behaviour & Retention
+\- **\*\*Customer spending by segment:\*\*** Compares the total spending contributed by each customer segment.
 
-![Customer Behaviour and Retention Dashboard](images/customer_behaviour_retention.jpg)
+\- **\*\*Average spending by segment:\*\*** Highlights differences in spending behaviour across customer groups.
 
-**Purpose:** Explore historical purchasing behaviour and the factors associated with customers returning to purchase again.
+\- **\*\*Top 10 states:\*\*** Identifies the geographic markets with the largest customer populations.
 
-**What the dashboard helps investigate:**
+**\*\*Business interpretation:\*\*** The dashboard helps distinguish customer volume from customer value, identify where spending is concentrated and highlight customer groups that deserve further investigation.
 
-- Differences between one-time and repeat purchasers.
-- The timing of subsequent purchases and repeat-purchase behaviour.
-- Customer retention patterns across relevant segments.
-- Potential opportunities for more focused retention analysis.
+**### Customer Behaviour & Retention**
 
-**Business interpretation:** Understanding when customers return and how purchasing behaviour differs can help businesses formulate targeted retention experiments rather than relying on broad, untargeted campaigns.
+![Customer Behaviour and Retention Dashboard]\(images/customer_behaviour_retention.jpg)
 
-### Repeat-Purchase Intelligence Dashboard
+**\*\*Purpose:\*\*** Explore historical purchasing behaviour and the factors associated with customers returning to purchase again.
 
-![Repeat-Purchase Intelligence Dashboard](images/repeat_purchase_intelligence.jpg)
+**\*\*What the dashboard helps investigate:\*\***
 
-**Purpose:** Combine predictive modelling with historical purchasing behaviour to identify customer groups with different relative likelihoods of repeat purchasing within 60 days.
+\- Differences between one-time and repeat purchasers.
 
-**What the visuals show:**
+\- The timing of subsequent purchases and repeat-purchase behaviour.
 
-- **KPI cards:** Summarise 78,100 historical customers scored, a 2.03% observed 60-day repeat-purchase rate, 15,620 high-propensity customers and a 3.58% repeat rate within the high-propensity segment.
-- **Customer distribution by propensity:** Shows how customers are divided into low (50%), medium (30%) and high (20%) propensity groups.
-- **Historical repeat-purchase rate by segment:** Compares observed repeat rates of 1.37%, 2.11% and 3.58% across low-, medium- and high-propensity customers.
-- **Customer profile heatmap:** Compares observed repeat-purchase rates across initial spending groups and propensity segments.
-- **Customer distribution by profile:** Shows where customer volume is concentrated across combinations of initial spending and propensity.
+\- Customer retention patterns across relevant segments.
 
-**Key business findings:**
+\- Potential opportunities for more focused retention analysis.
+
+**\*\*Business interpretation:\*\*** Understanding when customers return and how purchasing behaviour differs can help businesses formulate targeted retention experiments rather than relying on broad, untargeted campaigns.
+
+**### Repeat-Purchase Intelligence Dashboard**
+
+![Repeat-Purchase Intelligence Dashboard]\(images/repeat_purchase_intelligence.jpg)
+
+**\*\*Purpose:\*\*** Combine predictive modelling with historical purchasing behaviour to identify customer groups with different relative likelihoods of repeat purchasing within 60 days.
+
+**\*\*What the visuals show:\*\***
+
+\- **\*\*KPI cards:\*\*** Summarise 78,100 historical customers scored, a 2.03% observed 60-day repeat-purchase rate, 15,620 high-propensity customers and a 3.58% repeat rate within the high-propensity segment.
+
+\- **\*\*Customer distribution by propensity:\*\*** Shows how customers are divided into low (50%), medium (30%) and high (20%) propensity groups.
+
+\- **\*\*Historical repeat-purchase rate by segment:\*\*** Compares observed repeat rates of 1.37%, 2.11% and 3.58% across low-, medium- and high-propensity customers.
+
+\- **\*\*Customer profile heatmap:\*\*** Compares observed repeat-purchase rates across initial spending groups and propensity segments.
+
+\- **\*\*Customer distribution by profile:\*\*** Shows where customer volume is concentrated across combinations of initial spending and propensity.
+
+**\*\*Key business findings:\*\***
 
 The high-propensity segment recorded approximately 2.6 times the historical repeat-purchase rate of the low-propensity segment.
 
-The largest customer profile, **Higher Value | Low Propensity**, contains 20,931 customers. This group offers an opportunity to investigate barriers to repeat purchasing, although higher initial spending does not necessarily mean higher lifetime value or profitability.
+The largest customer profile, **\*\*Higher Value | Low Propensity\*\***, contains 20,931 customers. This group offers an opportunity to investigate barriers to repeat purchasing, although higher initial spending does not necessarily mean higher lifetime value or profitability.
 
-**Potential business application:** These insights could help prioritise customer research, design controlled retention experiments and evaluate different engagement strategies.
+**\*\*Potential business application:\*\*** These insights could help prioritise customer research, design controlled retention experiments and evaluate different engagement strategies.
 
-**Important limitations:** The results use historical development data, including customers used during model training. The observed segment differences are descriptive rather than independent validation. Model probabilities also require improved calibration and further testing before being used for operational customer targeting.
+**\*\*Important limitations:\*\*** The results use historical development data, including customers used during model training. The observed segment differences are descriptive rather than independent validation. Model probabilities also require improved calibration and further testing before being used for operational customer targeting.
 
----
+**---**
 
-### Dashboard Access
+**### Dashboard Access**
 
-The interactive Power BI report is available in [`powerbi/powerbi.pbix`](powerbi/powerbi.pbix). The screenshots above provide a visual preview for reviewers who do not have Power BI Desktop installed.
+The interactive Power BI report is available in [\`powerbi/powerbi.pbix\`]\(powerbi/powerbi.pbix). The screenshots above provide a visual preview for reviewers who do not have Power BI Desktop installed.
 
----
+**---**
 
 
-## Current Progress
+**## Current Progress**
 
 -## Current Progress
 
-### Data Engineering & SQL
-- Established the project structure, Git version control and GitHub repository.
-- Imported and validated the Olist e-commerce dataset in PostgreSQL.
-- Developed SQL analyses covering customer spending, segmentation, purchasing frequency and repeat-purchase behaviour.
-- Analysed second-purchase timing, including average and median days between purchases.
+**### Data Engineering & SQL**
 
-### Customer Feature Engineering
-- Built a customer-level feature engineering workflow using historical transaction data.
-- Developed customer attributes covering first-order spending, product categories, basket composition, purchase timing and geographic location.
-- Created a 60-day repeat-purchase target with a defined observation window and eligibility criteria.
-- Prepared 78,100 historical customers for scoring and segmentation.
+\- Established the project structure, Git version control and GitHub repository.
+
+\- Imported and validated the Olist e-commerce dataset in PostgreSQL.
+
+\- Developed SQL analyses covering customer spending, segmentation, purchasing frequency and repeat-purchase behaviour.
+
+\- Analysed second-purchase timing, including average and median days between purchases.
+
+**### Customer Feature Engineering**
+
+\- Built a customer-level feature engineering workflow using historical transaction data.
+
+\- Developed customer attributes covering first-order spending, product categories, basket composition, purchase timing and geographic location.
+
+\- Created a 60-day repeat-purchase target with a defined observation window and eligibility criteria.
+
+\- Prepared 78,100 historical customers for scoring and segmentation.
 
 
-#### Reproducible Feature Engineering Pipeline
+**#### Reproducible Feature Engineering Pipeline**
 
 The customer feature-engineering workflow has been reconstructed as a standalone Python script:
 
-`scripts/build_customer_features.py`
+\`scripts/build_customer_features.py\`
 
 The pipeline:
 
-- Loads and validates five original Olist datasets.
-- Identifies each customer's first recorded order.
-- Applies a 60-day repeat-purchase observation window and an additional 30-day delivery buffer.
-- Excludes customers with uncertain negative repeat-purchase labels.
-- Engineers purchase timing, basket, freight, payment, product-category and geographical features.
-- Compares the reconstructed dataset against the validated reference dataset before exporting results.
+\- Loads and validates five original Olist datasets.
+
+\- Identifies each customer's first recorded order.
+
+\- Applies a 60-day repeat-purchase observation window and an additional 30-day delivery buffer.
+
+\- Excludes customers with uncertain negative repeat-purchase labels.
+
+\- Engineers purchase timing, basket, freight, payment, product-category and geographical features.
+
+\- Compares the reconstructed dataset against the validated reference dataset before exporting results.
 
 
-**Run the pipeline**
+**\*\*Run the pipeline\*\***
 
 The pipeline supports two execution modes.
 
-**Build mode**
+**\*\*Build mode\*\***
 
 Generate customer features directly from the original Olist datasets without requiring the saved reference dataset.
 
-```powershell
+\`\`\`powershell
+
 python scripts/build_customer_features.py --mode build
-```
 
-Output: `data/processed/customer_features_built.pkl`
+\`\`\`
 
-**Verify mode**
+Output: \`data/processed/customer_features_built.pkl\`
+
+**\*\*Verify mode\*\***
 
 Reconstruct the features, compare customer identifiers, columns and values against the validated reference dataset, and export only when the comparison passes.
 
-```powershell
-python scripts/build_customer_features.py --mode verify
-```
+\`\`\`powershell
 
-Output: `data/processed/customer_features_rebuilt.pkl`
+python scripts/build_customer_features.py --mode verify
+
+\`\`\`
+
+Output: \`data/processed/customer_features_rebuilt.pkl\`
 
 Verify mode requires:
 
-`data/processed/customer_features_reference.pkl`
+\`data/processed/customer_features_reference.pkl\`
 
-If no execution mode is specified, the script defaults to `verify`.
+If no execution mode is specified, the script defaults to \`verify\`.
 
 Both modes perform the same upstream data-quality and feature-validation checks.
 
 
-**Required inputs**
+**\*\*Required inputs\*\***
 
-- Original Olist CSV files in `data/`.
-- Validated reference dataset at `data/processed/customer_features_reference.pkl`.
-- Python dependencies listed in `requirements.txt`.
+\- Original Olist CSV files in \`data/\`.
+
+\- Validated reference dataset at \`data/processed/customer_features_reference.pkl\`.
+
+\- Python dependencies listed in \`requirements.txt\`.
 
 The reference dataset is required for the current implementation's comparison and export checks. It must be provided separately if it is not included in the repository.
 
-**Validated results**
+**\*\*Validated results\*\***
 
-| Validation metric | Result |
-|---|---:|
-| Customer records | 78,100 |
-| Dataset columns | 29 |
-| Confirmed repeat purchasers | 1,589 |
-| Duplicate customers | 0 |
-| Missing or extra customers | 0 |
-| Columns with value differences | 0 |
+\| Validation metric | Result |
+
+\|---|---:|
+
+\| Customer records | 78,100 |
+
+\| Dataset columns | 29 |
+
+\| Confirmed repeat purchasers | 1,589 |
+
+\| Duplicate customers | 0 |
+
+\| Missing or extra customers | 0 |
+
+\| Columns with value differences | 0 |
 
 The comparison aligns records by customer identifier and checks feature values using a numerical tolerance for floating-point fields.
 
-**Output**
+**\*\*Output\*\***
 
-`data/processed/customer_features_rebuilt.pkl`
+\`data/processed/customer_features_rebuilt.pkl\`
 
 The pipeline creates this output only after the reference comparison passes. The original feature dataset remains unchanged.
 
-### Predictive Modelling & Evaluation
-- Developed a logistic regression baseline for predicting repeat purchases within 60 days.
-- Evaluated alternative approaches, including Random Forest and XGBoost.
-- Compared model performance using ROC-AUC, average precision, Brier score and log loss.
-- Conducted chronological validation and holdout evaluation.
-- Analysed model drivers and explored improvements to missing-value handling and regularisation.
-- Identified limitations in model calibration and generalisation that must be addressed before production deployment.
+**### Predictive Modelling & Evaluation**
 
-### Customer Intelligence & Segmentation
-- Generated repeat-purchase propensity scores for 78,100 historical customers.
-- Developed low-, medium- and high-propensity customer segments.
-- Combined initial order spending and propensity to create seven customer profiles, including an unknown-value group.
-- Compared observed repeat-purchase behaviour across customer segments.
-- Exported validated customer intelligence datasets in CSV and Parquet formats.
+\- Developed a logistic regression baseline for predicting repeat purchases within 60 days.
 
-### PostgreSQL Integration
-- Developed a reusable Python script to load customer intelligence outputs into PostgreSQL.
-- Successfully loaded 78,100 customer records into `customer_intelligence_v2`.
-- Validated record counts, customer uniqueness and propensity-segment metrics using SQL.
-- Preserved the existing Olist database tables.
+\- Evaluated alternative approaches, including Random Forest and XGBoost.
 
-### Power BI & Business Intelligence
-- Developed three Power BI dashboard pages:
-  - **Customer Overview:** Customer base, spending patterns, segmentation and geographic distribution.
-  - **Customer Behaviour & Retention:** Historical purchasing behaviour and repeat-purchase analysis.
-  - **Repeat-Purchase Intelligence:** Propensity segments, customer profiles, observed repeat rates and business insights.
-- Integrated the historical customer intelligence dataset directly from PostgreSQL.
-- Added interactive reporting, KPIs, customer profile comparisons and a repeat-purchase heatmap.
-- Documented business implications and model limitations.
+\- Compared model performance using ROC-AUC, average precision, Brier score and log loss.
 
-### Current Status
-**Historical customer intelligence prototype completed.**
+\- Conducted chronological validation and holdout evaluation.
+
+\- Analysed model drivers and explored improvements to missing-value handling and regularisation.
+
+\- Identified limitations in model calibration and generalisation that must be addressed before production deployment.
+
+**### Customer Intelligence & Segmentation**
+
+\- Generated repeat-purchase propensity scores for 78,100 historical customers.
+
+\- Developed low-, medium- and high-propensity customer segments.
+
+\- Combined initial order spending and propensity to create seven customer profiles, including an unknown-value group.
+
+\- Compared observed repeat-purchase behaviour across customer segments.
+
+\- Exported validated customer intelligence datasets in CSV and Parquet formats.
+
+**### PostgreSQL Integration**
+
+\- Developed a reusable Python script to load customer intelligence outputs into PostgreSQL.
+
+\- Successfully loaded 78,100 customer records into \`customer_intelligence_v2\`.
+
+\- Validated record counts, customer uniqueness and propensity-segment metrics using SQL.
+
+\- Preserved the existing Olist database tables.
+
+**### Power BI & Business Intelligence**
+
+\- Developed three Power BI dashboard pages:
+
+  - **\*\*Customer Overview:\*\*** Customer base, spending patterns, segmentation and geographic distribution.
+
+  - **\*\*Customer Behaviour & Retention:\*\*** Historical purchasing behaviour and repeat-purchase analysis.
+
+  - **\*\*Repeat-Purchase Intelligence:\*\*** Propensity segments, customer profiles, observed repeat rates and business insights.
+
+\- Integrated the historical customer intelligence dataset directly from PostgreSQL.
+
+\- Added interactive reporting, KPIs, customer profile comparisons and a repeat-purchase heatmap.
+
+\- Documented business implications and model limitations.
+
+**### Current Status**
+
+**\*\*Historical customer intelligence prototype completed.\*\***
 
 The platform now connects SQL analysis, Python feature engineering, machine learning, PostgreSQL and Power BI into a reproducible analytical workflow.
 
 The next phase focuses on independent model validation, calibration, reproducibility improvements and evaluating customer targeting strategies through controlled experiments.
 
----
+**---**
 
-## Next Development Stages
+**## Next Development Stages**
 
-### Model Reliability & Validation
-- Improve probability calibration to ensure predicted repeat-purchase likelihoods better reflect observed outcomes.
-- Evaluate model stability across customer cohorts, product categories and purchasing periods.
-- Establish stronger out-of-time validation using new, independently held-out data.
-- Investigate potential data leakage and confirm feature availability at the intended prediction point.
+**### Model Reliability & Validation**
 
-### Customer Lifetime Value (CLV)
-- Develop customer lifetime value estimates using historical purchasing behaviour.
-- Identify high-value customer groups beyond their initial order spending.
-- Combine customer value and repeat-purchase propensity to support more commercially meaningful segmentation.
-- Evaluate the relationship between customer value, retention and profitability where reliable cost data is available.
+\- Improve probability calibration to ensure predicted repeat-purchase likelihoods better reflect observed outcomes.
 
-### Retention Strategy & Decision-Making
-- Translate customer segments into testable retention strategies.
-- Investigate why customers with higher initial spending may not return.
-- Develop hypotheses for personalised customer engagement.
-- Design controlled experiments to measure whether targeted interventions improve repeat purchasing.
+\- Evaluate model stability across customer cohorts, product categories and purchasing periods.
 
-### Platform Engineering & Reproducibility
-- Improve automation of data preparation, feature engineering and customer scoring.
-- Introduce automated data quality checks and model monitoring.
-- Enhance documentation, dependency management and reproducibility.
-- Explore containerisation using Docker and automated testing through GitHub Actions.
+\- Establish stronger out-of-time validation using new, independently held-out data.
+
+\- Investigate potential data leakage and confirm feature availability at the intended prediction point.
+
+**### Customer Lifetime Value (CLV)**
+
+\- Develop customer lifetime value estimates using historical purchasing behaviour.
+
+\- Identify high-value customer groups beyond their initial order spending.
+
+\- Combine customer value and repeat-purchase propensity to support more commercially meaningful segmentation.
+
+\- Evaluate the relationship between customer value, retention and profitability where reliable cost data is available.
+
+**### Retention Strategy & Decision-Making**
+
+\- Translate customer segments into testable retention strategies.
+
+\- Investigate why customers with higher initial spending may not return.
+
+\- Develop hypotheses for personalised customer engagement.
+
+\- Design controlled experiments to measure whether targeted interventions improve repeat purchasing.
+
+**### Platform Engineering & Reproducibility**
+
+\- Improve automation of data preparation, feature engineering and customer scoring.
+
+\- Introduce automated data quality checks and model monitoring.
+
+\- Enhance documentation, dependency management and reproducibility.
+
+\- Explore containerisation using Docker and automated testing through GitHub Actions.
 
 
-#### Reproducible Customer Scoring Pipeline
+**#### Reproducible Customer Scoring Pipeline**
 
 The customer-scoring workflow is implemented in:
 
-`scripts/score_customers.py`
+\`scripts/score_customers.py\`
 
 It uses the reconstructed customer features and an existing fitted logistic regression pipeline to generate historical 60-day repeat-purchase probabilities.
 
-**Run the scoring pipeline**
+**\*\*Run the scoring pipeline\*\***
 
 From the project root directory:
 
-```powershell
+\`\`\`powershell
+
 python scripts/build_customer_features.py --mode build
+
 python scripts/score_customers.py
-```
 
-**Required inputs**
+\`\`\`
 
-- `data/processed/customer_features_built.pkl`
-- `models/repeat_purchase_logistic_regression.joblib`
-- Python dependencies listed in `requirements.txt`
+**\*\*Required inputs\*\***
+
+\- \`data/processed/customer_features_built.pkl\`
+
+\- \`models/repeat_purchase_logistic_regression.joblib\`
+
+\- Python dependencies listed in \`requirements.txt\`
 
 The saved model includes fitted preprocessing and expects nine customer features. The scoring script selects these features using the model's recorded input schema.
 
-**Validated scoring results**
+**\*\*Validated scoring results\*\***
 
-| Metric | Result |
-|---|---:|
-| Total customers | 78,100 |
-| Successfully scored | 76,197 |
-| Not scored due to missing model inputs | 1,903 |
-| Missing probabilities among scored customers | 0 |
-| Duplicate customer identifiers | 0 |
+\| Metric | Result |
+
+\|---|---:|
+
+\| Total customers | 78,100 |
+
+\| Successfully scored | 76,197 |
+
+\| Not scored due to missing model inputs | 1,903 |
+
+\| Missing probabilities among scored customers | 0 |
+
+\| Duplicate customer identifiers | 0 |
 
 Customers with incomplete model inputs are retained with a missing probability and an explicit scoring status. No default probability is assigned.
 
-**Output**
+**\*\*Output\*\***
 
-`data/processed/customer_scoring_output.pkl`
+\`data/processed/customer_scoring_output.pkl\`
 
 The output contains:
 
-- `customer_unique_id`
-- `order_id`
-- `repeat_purchase_propensity`
-- `scoring_status`
+\- \`customer_unique_id\`
+
+\- \`order_id\`
+
+\- \`repeat_purchase_propensity\`
+
+\- \`scoring_status\`
 
 The script validates probability ranges, customer uniqueness, scoring coverage and the saved output.
 
-**Scope and limitations**
+**\*\*Scope and limitations\*\***
 
 These scores describe historical customers. Running the scoring pipeline does not retrain the model or provide new evidence of predictive performance.
 
 The workflow is intended for reproducible analysis and integration, not live production decisioning.
 
 
-### Business Intelligence & Reporting
-- Enhance Power BI reporting with customer lifetime value and additional commercial KPIs.
-- Improve dashboard navigation, filtering and customer segment comparisons.
-- Develop reporting to track model performance and customer behaviour over time.
-- Support clearer business recommendations through actionable insights.
+**### Business Intelligence & Reporting**
 
-### Long-Term Vision
+\- Enhance Power BI reporting with customer lifetime value and additional commercial KPIs.
+
+\- Improve dashboard navigation, filtering and customer segment comparisons.
+
+\- Develop reporting to track model performance and customer behaviour over time.
+
+\- Support clearer business recommendations through actionable insights.
+
+**### Long-Term Vision**
 
 Evolve the Customer Intelligence Platform from a historical analytics and predictive modelling prototype into a reliable customer decision-support system.
 
 The long-term goal is to help businesses understand customer behaviour, estimate future customer value, identify retention opportunities and evaluate personalised engagement strategies through measurable business outcomes.
 
----
+**---**
 
-## Technologies Used
+**## Technologies Used**
 
-### Programming & Data Analysis
-- **Python:** Data processing, customer analysis, feature engineering and predictive modelling.
-- **Pandas & NumPy:** Data manipulation, transformation and numerical analysis.
-- **SQL:** Customer behaviour analysis, segmentation and data validation.
+**### Programming & Data Analysis**
 
-### Database & Data Engineering
-- **PostgreSQL 17:** Relational database for storing and analysing customer transactions and intelligence outputs.
-- **SQLAlchemy & psycopg2:** Python integration with PostgreSQL.
-- **Parquet & CSV:** Data storage and analytical exports.
+\- **\*\*Python:\*\*** Data processing, customer analysis, feature engineering and predictive modelling.
 
-### Machine Learning
-- **Scikit-learn:** Logistic regression, Random Forest, preprocessing, model evaluation and hyperparameter tuning.
-- **XGBoost:** Alternative repeat-purchase prediction modelling.
-- **Joblib:** Saving and loading trained machine learning models.
-- **Model explainability:** Logistic regression feature-contribution analysis.
+\- **\*\*Pandas & NumPy:\*\*** Data manipulation, transformation and numerical analysis.
 
-### Data Visualisation & Business Intelligence
-- **Power BI Desktop:** Interactive customer intelligence dashboards and business reporting.
-- **Matplotlib:** Exploratory data analysis and model visualisations.
-- **Seaborn:** Statistical data visualisation.
+\- **\*\*SQL:\*\*** Customer behaviour analysis, segmentation and data validation.
 
-### Development & Version Control
-- **Visual Studio Code:** Development environment.
-- **Jupyter Notebooks:** Exploratory analysis, modelling and evaluation workflows.
-- **Git & GitHub:** Version control, documentation and project management.
+**### Database & Data Engineering**
 
-### Technologies Planned for Future Development
-- **Docker:** Containerisation and reproducible environments.
-- **GitHub Actions:** Automated testing and continuous integration.
-- **Model monitoring:** Performance tracking, data quality monitoring and scoring reliability.
+\- **\*\*PostgreSQL 17:\*\*** Relational database for storing and analysing customer transactions and intelligence outputs.
 
-## Author
+\- **\*\*SQLAlchemy & psycopg2:\*\*** Python integration with PostgreSQL.
 
-**Esther A**
+\- **\*\*Parquet & CSV:\*\*** Data storage and analytical exports.
+
+**### Machine Learning**
+
+\- **\*\*Scikit-learn:\*\*** Logistic regression, Random Forest, preprocessing, model evaluation and hyperparameter tuning.
+
+\- **\*\*XGBoost:\*\*** Alternative repeat-purchase prediction modelling.
+
+\- **\*\*Joblib:\*\*** Saving and loading trained machine learning models.
+
+\- **\*\*Model explainability:\*\*** Logistic regression feature-contribution analysis.
+
+**### Data Visualisation & Business Intelligence**
+
+\- **\*\*Power BI Desktop:\*\*** Interactive customer intelligence dashboards and business reporting.
+
+\- **\*\*Matplotlib:\*\*** Exploratory data analysis and model visualisations.
+
+\- **\*\*Seaborn:\*\*** Statistical data visualisation.
+
+**### Development & Version Control**
+
+\- **\*\*Visual Studio Code:\*\*** Development environment.
+
+\- **\*\*Jupyter Notebooks:\*\*** Exploratory analysis, modelling and evaluation workflows.
+
+\- **\*\*Git & GitHub:\*\*** Version control, documentation and project management.
+
+**### Technologies Planned for Future Development**
+
+\- **\*\*Docker:\*\*** Containerisation and reproducible environments.
+
+\- **\*\*GitHub Actions:\*\*** Automated testing and continuous integration.
+
+\- **\*\*Model monitoring:\*\*** Performance tracking, data quality monitoring and scoring reliability.
+
+**## Author**
+
+**\*\*Esther A\*\***
