@@ -29,6 +29,8 @@ __pycache__/
 # Locally trained model artifacts
 models/*.joblib
 models/*.pkl
+# Allow the validated repeat-purchase model
+!models/repeat_purchase_logistic_regression.joblib
 
 # System files
 .DS_Store
