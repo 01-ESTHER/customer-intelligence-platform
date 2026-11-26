@@ -1,13 +1,21 @@
-**# Customer Intelligence Platform**
 
-**## Project Overview**
+ # Customer Intelligence Platform
 
-This project is an end-to-end Customer Intelligence Platform developed using the Brazilian Olist e-commerce dataset. It combines PostgreSQL, SQL, and Power BI to analyse customer purchasing behaviour, spending patterns, segmentation, and repeat purchases.
+## Project Overview
 
-The objective is to transform raw transactional data into meaningful business insights that support customer understanding, retention analysis, and data-driven decision-making.
+The Customer Intelligence Platform is an end-to-end data science and business intelligence project developed using the Brazilian Olist e-commerce dataset.
 
-The current implementation includes relational database development, SQL-based data transformation and validation, customer segmentation, second-purchase behaviour analysis, and a two-page interactive Power BI dashboard. Future development will explore Python-based analytics and predictive machine learning.
+The platform integrates PostgreSQL, SQL, Python, machine learning, and Power BI to analyse customer purchasing behaviour, predict 60-day repeat-purchase propensity, examine observed merchandise value, and identify opportunities for evidence-based retention decisions.
 
+The analytical workflow covers data preparation, customer-level feature engineering, predictive modelling, model evaluation, customer scoring and segmentation, customer value analysis, and business recommendations across 12 Jupyter notebooks.
+
+The validated customer reporting dataset contains 78,100 historical customers, with an observed 60-day repeat-purchase rate of 2.03% and approximately R$10.61 million in combined initial and subsequent merchandise value.
+
+The analysis identifies meaningful differences across customer profiles, including 20,931 higher-initial-value, low-propensity customers who warrant further investigation.
+
+The platform is a historical analytical and decision-support prototype, not a production-ready automated targeting system. Predictive reliability requires further prospective validation, and the commercial effectiveness of retention interventions remains unproven.
+
+The project concludes with evidence-based business recommendations, a proposed controlled retention experiment, and an assessment of its statistical and commercial feasibility.
 **---**
 
 **## Project Structure**
@@ -62,15 +70,122 @@ customer-intelligence-platform/
 
 \`\`\`
 
+
+**## Analytical Workflow**
+
+The Customer Intelligence Platform was developed across 12 Jupyter notebooks, covering the full analytical process from exploratory analysis to business recommendations.
+
+| Notebook | Analytical Stage | Purpose |
+|---|---|---|
+| 01 | Exploratory Data Analysis | Investigate customer transactions, purchasing patterns, and data quality. |
+| 02 | Customer Feature Engineering | Build customer-level features and define the 60-day repeat-purchase target. |
+| 03 | Repeat-Purchase Modelling | Develop predictive models using chronological training, validation, and test populations. |
+| 04 | Model Evaluation and Insights | Evaluate discrimination, probability reliability, and model performance against baselines. |
+| 05 | Model Explainability | Examine model drivers and interpret their relationship with repeat-purchase predictions. |
+| 06 | Model Improvement | Investigate alternative modelling approaches and potential performance improvements. |
+| 07 | Customer Scoring and Segmentation | Generate propensity-based customer groups and examine historical repeat-purchase behaviour. |
+| 08 | Model Reliability and Validation | Investigate temporal stability, evaluation populations, and model reliability limitations. |
+| 09 | Historical Customer Value Analysis | Measure observed initial and subsequent merchandise value. |
+| 10 | Predictive Customer Value | Explore experimental approaches to predicting customer monetary value. |
+| 11 | Customer Value Integration | Integrate validated customer outcomes, propensity segments, and historical merchandise value. |
+| 12 | Business Insights and Recommendations | Translate analytical findings into business hypotheses, experiment feasibility assessments, and decision recommendations. |
+
+**### Analytical Outcome**
+
+The platform establishes a reproducible foundation for customer intelligence and evidence-based retention planning.
+
+The historical analysis is complete, but the predictive models require further independent validation before operational deployment. Experimental monetary-value predictions are not approved for production reporting.
+
+
+**## Key Business Findings**
+
+The final customer intelligence analysis covers 78,100 historical customers and combines purchasing behaviour, repeat-purchase propensity, and observed merchandise value.
+
+**### 1. Customer Retention Remains Low**
+
+- 78,100 customers were included in the historical reporting population.
+- 1,589 customers made a qualifying repeat purchase within 60 days.
+- The observed 60-day repeat-purchase rate was 2.03%.
+
+This establishes a measurable baseline for understanding customer retention, but does not explain why individual customers return.
+
+**### 2. Initial Customer Spending Does Not Guarantee Repeat Purchasing**
+
+The Higher Value | Low Propensity segment contains:
+
+- 20,931 customers, representing 26.80% of the reporting population.
+- An observed 60-day repeat-purchase rate of 1.19%.
+- Average observed merchandise value of R$264.28 per customer.
+
+Despite its relatively high observed merchandise value, this segment has a low historical repeat-purchase rate.
+
+**Business implication:** Prioritise investigation into repeat-purchase barriers rather than assuming these customers will respond positively to marketing interventions.
+
+**### 3. Repeat-Purchase Propensity and Customer Value Are Distinct**
+
+The Higher Value | High Propensity segment contains 7,287 customers and recorded:
+
+- A 3.55% observed repeat-purchase rate.
+- R$175.70 average observed merchandise value per customer.
+- R$5.58 average subsequent 60-day merchandise value per customer.
+
+These findings demonstrate why repeat-purchase propensity and observed monetary value should be considered together, rather than used interchangeably.
+
+**### 4. Observed Merchandise Value Is Not Profitability**
+
+Across the reporting population:
+
+- Initial delivered merchandise value: R$10,395,105.68.
+- Subsequent 60-day merchandise value: R$211,295.19.
+- Combined observed merchandise value: R$10,606,400.87.
+
+The subsequent-purchase component represents approximately 1.99% of combined observed merchandise value.
+
+These measures do not represent customer lifetime value, contribution margin, or incremental revenue attributable to marketing activity.
+
+**### 5. Retention Experiment Feasibility Is a Significant Constraint**
+
+Using the historical 1.19% repeat-purchase baseline for Higher Value | Low Propensity customers, the sample-size analysis estimated:
+
+| Assumed Relative Improvement | Total Customers Required |
+|---|---:|
+| 10% | 273,492 |
+| 20% | 71,480 |
+| 30% | 33,120 |
+| 50% | 12,870 |
+
+Assumptions: two-sided test, 5% significance level, 80% statistical power, and equal treatment/control allocation.
+
+These are hypothetical planning scenarios, not predictions of intervention effectiveness.
+
+The historical segment size does not establish the number of customers available for a future experiment.
+
+**## Final Business Recommendations
+
+| Recommendation | Decision |
+|---|---|
+| Establish a consistent customer performance scorecard | Proceed with descriptive reporting |
+| Investigate higher-value, low-propensity customers | Prioritise discovery |
+| Test whether targeted engagement generates incremental value | Conditional on experiment feasibility |
+| Deploy automated propensity-based targeting | Not yet approved |
+| Deploy predicted monetary customer value | Not yet approved |
+| Preserve transparent customer and merchandise-value definitions | Proceed with ongoing quality assurance |
+
+**### Final Business Decision**
+
+The Customer Intelligence Platform supports historical customer reporting, customer segmentation, and evidence-based retention planning.
+
+However, historical customer differences do not establish incremental treatment responsiveness.
+
+**The recommended next step is to strengthen customer understanding, validate prospective model reliability, and establish the commercial and statistical feasibility of controlled retention experiments before approving large-scale targeted campaigns.**
+
+
+
 **## Power BI Dashboard Preview**
 
 **### Customer Overview**
-
-**## Power BI Dashboard Preview**
 
 The Customer Intelligence Platform includes three interactive Power BI dashboards that transform e-commerce transaction data into customer insights. Together, they support customer understanding, repeat-purchase analysis and exploratory retention decision-making.
-
-**### Customer Overview**
 
 ![Customer Overview Dashboard]\(images/customer_overview\.jpg)
 
@@ -136,6 +251,30 @@ The largest customer profile, **\*\*Higher Value | Low Propensity\*\***, contain
 
 **\*\*Important limitations:\*\*** The results use historical development data, including customers used during model training. The observed segment differences are descriptive rather than independent validation. Model probabilities also require improved calibration and further testing before being used for operational customer targeting.
 
+
+**### Customer Value & Decision Intelligence**
+
+
+![Customer Value and Decision Intelligence Dashboard](images/Customer%20Value%20%26%20Decision%20Intelligence.jpg)
+
+**Purpose:** Integrate customer purchasing behaviour, repeat-purchase propensity, and observed merchandise value to support evidence-based business decisions.
+
+**What the dashboard supports:**
+
+- Comparison of observed merchandise value across customer groups.
+- Assessment of customer profiles using initial purchase value and repeat-purchase propensity.
+- Identification of customer groups requiring further retention investigation.
+- Distinction between historical customer value and predicted future value.
+- Exploration of business opportunities without assuming that targeted interventions will increase profitability.
+
+**Business interpretation:**
+
+Customer spending and repeat-purchase propensity provide different perspectives on customer behaviour. Combining them helps identify commercially relevant customer groups and formulate hypotheses for further investigation.
+
+**Important limitation:**
+
+Observed merchandise value is not equivalent to profit or customer lifetime value. Historical customer differences do not establish the incremental impact of retention campaigns.
+
 **---**
 
 **### Dashboard Access**
@@ -145,9 +284,44 @@ The interactive Power BI report is available in [\`powerbi/powerbi.pbix\`]\(powe
 **---**
 
 
-**## Current Progress**
+**### Current Status
 
--## Current Progress
+**Status: Historical Customer Intelligence Analysis Complete**
+
+The Customer Intelligence Platform has completed its planned analytical workflow across 12 Jupyter notebooks.
+
+Completed deliverables include:
+
+- PostgreSQL database development and SQL-based customer analysis.
+- Reproducible customer feature engineering.
+- Repeat-purchase predictive modelling and evaluation.
+- Historical customer scoring and segmentation.
+- Model reliability and validation assessments.
+- Historical customer merchandise-value analysis.
+- Experimental predictive customer-value modelling.
+- Integration of customer propensity and observed merchandise value.
+- Interactive Power BI business intelligence reporting.
+- Evidence-based business recommendations and retention experiment feasibility analysis.
+
+The validated historical reporting dataset contains 78,100 customers.
+
+A separate reproducible scoring pipeline successfully generated propensity scores for 76,197 customers, retaining 1,903 customers with an explicit unscored status.
+
+**### Operational Readiness**
+
+The platform is complete as an analytical portfolio project, but it is not approved for automated production targeting.
+
+Further work would require:
+
+- Independent prospective model validation.
+- Improved probability calibration and model monitoring.
+- Verification of feature availability at the operational decision point.
+- Commercial contribution-margin and intervention-cost data.
+- Prospective customer eligibility and recruitment estimates.
+- Controlled experimentation to establish incremental business impact.
+
+**Final assessment:** The platform provides a defensible foundation for customer understanding, descriptive reporting, and evidence-based retention planning. Operational deployment remains subject to further validation.
+
 
 **### Data Engineering & SQL**
 
@@ -280,7 +454,11 @@ The pipeline creates this output only after the reference comparison passes. The
 
 **### Customer Intelligence & Segmentation**
 
-\- Generated repeat-purchase propensity scores for 78,100 historical customers.
+\- Developed propensity-based customer segmentation for the historical reporting population of 78,100 customers.
+
+\- Independently validated the reproducible scoring pipeline, which successfully scored 76,197 customers and retained 1,903 customers with missing model inputs as unscored.
+
+\- Preserved the distinction between historical dashboard segmentation and the separate reproducible scoring output.
 
 \- Developed low-, medium- and high-propensity customer segments.
 
@@ -302,7 +480,7 @@ The pipeline creates this output only after the reference comparison passes. The
 
 **### Power BI & Business Intelligence**
 
-\- Developed three Power BI dashboard pages:
+\- Developed four Power BI dashboard pages:
 
   - **\*\*Customer Overview:\*\*** Customer base, spending patterns, segmentation and geographic distribution.
 
@@ -310,23 +488,19 @@ The pipeline creates this output only after the reference comparison passes. The
 
   - **\*\*Repeat-Purchase Intelligence:\*\*** Propensity segments, customer profiles, observed repeat rates and business insights.
 
+- **\*\*Customer Value & Decision Intelligence:** Observed merchandise value, customer profiles, and evidence-based business decision support.
+
 \- Integrated the historical customer intelligence dataset directly from PostgreSQL.
 
 \- Added interactive reporting, KPIs, customer profile comparisons and a repeat-purchase heatmap.
 
 \- Documented business implications and model limitations.
 
-**### Current Status**
 
-**\*\*Historical customer intelligence prototype completed.\*\***
-
-The platform now connects SQL analysis, Python feature engineering, machine learning, PostgreSQL and Power BI into a reproducible analytical workflow.
-
-The next phase focuses on independent model validation, calibration, reproducibility improvements and evaluating customer targeting strategies through controlled experiments.
 
 **---**
 
-**## Next Development Stages**
+**## Future Validation and Production Roadmap**
 
 **### Model Reliability & Validation**
 
@@ -338,15 +512,19 @@ The next phase focuses on independent model validation, calibration, reproducibi
 
 \- Investigate potential data leakage and confirm feature availability at the intended prediction point.
 
-**### Customer Lifetime Value (CLV)**
+### Monetary Value Modelling and Commercial Validation
+Historical customer merchandise-value analysis and experimental predictive monetary-value modelling have been completed.
 
-\- Develop customer lifetime value estimates using historical purchasing behaviour.
+Future development should focus on:
 
-\- Identify high-value customer groups beyond their initial order spending.
+- Independently validating monetary-value predictions on future customer cohorts.
+- Evaluating prediction accuracy against appropriate business benchmarks.
+- Establishing reliable contribution-margin and customer acquisition-cost measures.
+- Investigating whether monetary-value predictions improve commercial decisions.
+- Introducing predictive monetary-value estimates into operational reporting only after sufficient validation.
 
-\- Combine customer value and repeat-purchase propensity to support more commercially meaningful segmentation.
+Observed merchandise value must remain distinct from predicted customer value, profitability, and customer lifetime value.
 
-\- Evaluate the relationship between customer value, retention and profitability where reliable cost data is available.
 
 **### Retention Strategy & Decision-Making**
 
